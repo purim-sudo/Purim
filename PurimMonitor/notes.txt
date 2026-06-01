@@ -1,0 +1,5 @@
+PurimMonitor Endpoints
+
+/ -> project status
+/stats -> infrastructure statistics
+/health -> application health
