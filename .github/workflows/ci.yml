@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  python:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install PurimMonitor dependencies
+        run: pip install -r PurimMonitor/requirements.txt
+
+      - name: Run Python tests
+        run: |
+          PYTHONPATH=PurimMonitor python -m unittest discover -s PurimMonitor/tests
+          PYTHONPATH=NetWatch python -m unittest discover -s NetWatch/tests
+
+      - name: Compile Python modules
+        run: python -m compileall PurimMonitor NetWatch
+
+  node:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: SecureShare/package-lock.json
+
+      - name: Install SecureShare dependencies
+        working-directory: SecureShare
+        run: npm install
+
+      - name: Run SecureShare tests
+        working-directory: SecureShare
+        run: npm test

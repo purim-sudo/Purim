@@ -1,22 +1,42 @@
 const jwt = require('jsonwebtoken');
 
-const SECRET = 'purim-secret-key';
+const DEVELOPMENT_SECRET = 'development-only-secret-change-me';
+
+function getJwtSecret() {
+  const secret = process.env.JWT_SECRET;
+
+  if (secret && secret.length >= 32) {
+    return secret;
+  }
+
+  if (process.env.NODE_ENV === 'production') {
+    throw new Error('JWT_SECRET must be set to at least 32 characters in production');
+  }
+
+  return DEVELOPMENT_SECRET;
+}
 
 function authenticate(req, res, next) {
-  const authHeader = req.headers['authorization'];
-  if (!authHeader) return res.status(401).json({ error: 'No token' });
+  const authHeader = req.headers.authorization;
 
-  const token = authHeader.split(' ')[1];
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    return res.status(401).json({ error: 'Missing bearer token' });
+  }
 
-  jwt.verify(token, SECRET, (err, user) => {
-    if (err) return res.status(403).json({ error: 'Invalid token' });
+  const token = authHeader.slice('Bearer '.length);
+
+  return jwt.verify(token, getJwtSecret(), (err, user) => {
+    if (err) {
+      return res.status(403).json({ error: 'Invalid token' });
+    }
+
     req.user = user;
-    next();
+    return next();
   });
 }
 
 function generateToken(user) {
-  return jwt.sign(user, SECRET, { expiresIn: '1h' });
+  return jwt.sign(user, getJwtSecret(), { expiresIn: process.env.JWT_EXPIRES_IN || '1h' });
 }
 
-module.exports = { authenticate, generateToken };
+module.exports = { authenticate, generateToken, getJwtSecret };
