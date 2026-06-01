@@ -1,17 +1,21 @@
 # Security Architecture
 
 ## SecureShare
-- JWT authentication
-- Protected API endpoints
+- JWT authentication with an environment-provided secret in production
+- Protected upload and file metadata endpoints
+- Rate limiting and hardened HTTP headers
+- Expiring upload metadata
 - Planned encrypted uploads
-- Upload tracking
 
 ## PurimMonitor
 - Health monitoring
 - Infrastructure visibility
+- Hardened response headers
+- Non-debug production container command
 - Planned authentication layer
 
 ## NetWatch
 - Internal network diagnostics
-- Infrastructure scanning
+- Explicit host, port, subnet, and limit controls
+- Import-safe modules for testability
 - Planned device fingerprinting
