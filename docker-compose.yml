@@ -1,0 +1,12 @@
+version: '3.9'
+
+services:
+  purimmonitor:
+    build: ./PurimMonitor
+    ports:
+      - '5000:5000'
+
+  secureshare:
+    build: ./SecureShare
+    ports:
+      - '3000:3000'
