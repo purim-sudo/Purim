@@ -8,7 +8,8 @@ app = Flask(__name__)
 def home():
     return jsonify({
         'project': 'PurimMonitor',
-        'status': 'running'
+        'status': 'running',
+        'version': '1.0.0'
     })
 
 @app.route('/stats')
@@ -16,7 +17,15 @@ def stats():
     return jsonify({
         'cpu_percent': psutil.cpu_percent(),
         'memory_percent': psutil.virtual_memory().percent,
-        'system': platform.system()
+        'disk_percent': psutil.disk_usage('/').percent,
+        'system': platform.system(),
+        'hostname': platform.node()
+    })
+
+@app.route('/health')
+def health():
+    return jsonify({
+        'status': 'healthy'
     })
 
 if __name__ == '__main__':
