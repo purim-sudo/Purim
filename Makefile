@@ -8,7 +8,7 @@ test-python:
 	python -m compileall PurimMonitor NetWatch
 
 install-node:
-	cd SecureShare && npm ci
+	cd SecureShare && npm install
 
 test-node: install-node
 	cd SecureShare && npm test
