@@ -1,0 +1,7 @@
+PurimMonitor Dashboard Modules
+
+- CPU Monitoring
+- RAM Monitoring
+- API Status Checks
+- Uptime Tracking
+- Server Health Indicators
