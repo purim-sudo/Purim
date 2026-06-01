@@ -1,0 +1,7 @@
+NetWatch Planned Features
+
+- Device discovery
+- Ping monitoring
+- Port checks
+- Network diagnostics
+- Monitoring dashboard
