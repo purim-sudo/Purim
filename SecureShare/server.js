@@ -112,7 +112,7 @@ function createApp(options = {}) {
   });
 
   app.get('/health', (req, res) => {
-    res.json({ status: 'healthy', version: VERSION });
+    res.json({ status: 'healthy' });
   });
 
   app.get('/metrics', authenticate, (req, res) => {
