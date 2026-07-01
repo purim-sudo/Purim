@@ -10,6 +10,7 @@ Start here:
 - [docs/DEMO_GUIDE.md](docs/DEMO_GUIDE.md) - step-by-step demo flow
 - [examples/](examples/) - sample inputs and JSON outputs
 - [portfolio.json](portfolio.json) - machine-readable project summary
+- [DEVELOPMENT.md](DEVELOPMENT.md) - local development guide
 
 ## Project Portfolio
 
@@ -46,6 +47,7 @@ docs/           Demo and review notes
 examples/       Sample inputs and outputs
 .github/        GitHub Actions workflow
 SHOWCASE.md     Portfolio viewing guide
+DEVELOPMENT.md  Local development guide
 portfolio.json  Project summary data
 ```
 
