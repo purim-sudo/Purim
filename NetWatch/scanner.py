@@ -34,7 +34,16 @@ def parse_ports(value):
     ports = []
 
     for raw_port in value.split(","):
-        port = int(raw_port.strip())
+        raw_port = raw_port.strip()
+
+        if not raw_port:
+            raise argparse.ArgumentTypeError("ports must be comma-separated integers")
+
+        try:
+            port = int(raw_port)
+        except ValueError as exc:
+            raise argparse.ArgumentTypeError("ports must be comma-separated integers") from exc
+
         if port < 1 or port > 65535:
             raise argparse.ArgumentTypeError("ports must be between 1 and 65535")
         ports.append(port)
