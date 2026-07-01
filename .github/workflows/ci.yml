@@ -45,7 +45,7 @@ jobs:
 
       - name: Install SecureShare dependencies
         working-directory: SecureShare
-        run: npm install
+        run: npm ci
 
       - name: Run SecureShare tests
         working-directory: SecureShare
