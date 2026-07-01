@@ -1,0 +1,27 @@
+{
+  "total_lines": 6,
+  "http_requests": 4,
+  "text_events": 2,
+  "status_counts": {
+    "200": 2,
+    "401": 1,
+    "404": 1
+  },
+  "method_counts": {
+    "GET": 3,
+    "POST": 1
+  },
+  "top_paths": {
+    "/": 1,
+    "/health": 1,
+    "/login": 1,
+    "/missing": 1
+  },
+  "level_counts": {
+    "INFO": 1,
+    "ERROR": 1
+  },
+  "error_samples": [
+    "2026-07-01 10:01:00 ERROR database timeout"
+  ]
+}

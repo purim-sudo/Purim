@@ -26,9 +26,10 @@ jobs:
         run: |
           PYTHONPATH=PurimMonitor python -m unittest discover -s PurimMonitor/tests
           PYTHONPATH=NetWatch python -m unittest discover -s NetWatch/tests
+          PYTHONPATH=LogLens python -m unittest discover -s LogLens/tests
 
       - name: Compile Python modules
-        run: python -m compileall PurimMonitor NetWatch
+        run: python -m compileall PurimMonitor NetWatch LogLens
 
   node:
     runs-on: ubuntu-latest
@@ -45,7 +46,7 @@ jobs:
 
       - name: Install SecureShare dependencies
         working-directory: SecureShare
-        run: npm install
+        run: npm ci
 
       - name: Run SecureShare tests
         working-directory: SecureShare

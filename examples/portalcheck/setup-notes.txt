@@ -1,0 +1,5 @@
+Portal login page with custom logo
+Addressing notes include pool and dns setup
+Voucher plans include daily and weekly quotas
+Payment notes are ready
+Brand colors and template notes are prepared

@@ -1,0 +1,31 @@
+{
+  "name": "Purim Labs",
+  "purpose": "Portfolio repository for practical software tools",
+  "projects": [
+    {
+      "name": "PurimMonitor",
+      "category": "Python API",
+      "shows": ["Flask", "JSON endpoints", "testing", "service status"]
+    },
+    {
+      "name": "SecureShare",
+      "category": "Node.js API",
+      "shows": ["Express", "protected routes", "configuration", "tests"]
+    },
+    {
+      "name": "NetWatch",
+      "category": "Python CLI",
+      "shows": ["argument parsing", "input validation", "utility design"]
+    },
+    {
+      "name": "LogLens",
+      "category": "Python CLI",
+      "shows": ["text parsing", "summary output", "JSON output"]
+    },
+    {
+      "name": "PortalCheck",
+      "category": "Python CLI",
+      "shows": ["text review", "checklist summaries", "simple automation"]
+    }
+  ]
+}

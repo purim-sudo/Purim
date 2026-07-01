@@ -5,7 +5,8 @@ test: test-python test-node
 test-python:
 	PYTHONPATH=PurimMonitor python -m unittest discover -s PurimMonitor/tests
 	PYTHONPATH=NetWatch python -m unittest discover -s NetWatch/tests
-	python -m compileall PurimMonitor NetWatch
+	PYTHONPATH=LogLens python -m unittest discover -s LogLens/tests
+	python -m compileall PurimMonitor NetWatch LogLens
 
 install-node:
 	cd SecureShare && npm ci

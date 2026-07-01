@@ -1,43 +1,63 @@
 # SecureShare
 
-SecureShare is a lightweight secure file-sharing prototype.
+SecureShare is a lightweight API prototype for temporary file-sharing workflows.
 
-## Planned Features
-- Temporary file links
-- Encryption-ready architecture
-- Upload expiration
-- Authentication support
-- Download tracking
+It focuses on clean API structure, protected routes, expiring upload records, simple configuration, and testable Express application design.
+
+## Features
+
+- Temporary upload metadata
+- Expiring file records
+- Protected API routes
+- Request limits
+- Security headers
+- Test-friendly app factory
 
 ## Stack
+
 - Node.js
 - Express
-
-## Configuration
-
-Set `JWT_SECRET` to at least 32 characters in production.
-
-Optional environment variables:
-- `PORT`, default `3000`
-- `UPLOAD_TTL_SECONDS`, default `3600`
-- `MAX_UPLOADS`, default `1000`
-- `RATE_LIMIT_PER_MINUTE`, default `60`
-- `JSON_BODY_LIMIT`, default `100kb`
+- JSON Web Tokens
+- Helmet
+- express-rate-limit
 
 ## API
 
-Public:
+Public routes:
+
 - `GET /`
 - `GET /health`
 
-Authenticated with `Authorization: Bearer <token>`:
+Protected routes:
+
 - `POST /upload`
 - `GET /files`
 - `GET /files/:id`
 
+## Configuration
+
+An example configuration file is provided at `.env.example`.
+
+Useful settings include:
+
+- `PORT`
+- `JWT_SECRET`
+- `JWT_EXPIRES_IN`
+- `UPLOAD_TTL_SECONDS`
+- `MAX_UPLOADS`
+- `RATE_LIMIT_PER_MINUTE`
+- `JSON_BODY_LIMIT`
+
+## Run
+
+```bash
+npm ci
+npm start
+```
+
 ## Test
 
 ```bash
-npm install
+npm ci
 npm test
 ```
