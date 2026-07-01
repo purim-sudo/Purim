@@ -6,13 +6,23 @@ const rateLimit = require('express-rate-limit');
 
 const { authenticate, getJwtSecret } = require('./auth');
 
-const VERSION = '1.0.0';
+const VERSION = '1.1.0';
 const DEFAULT_UPLOAD_TTL_SECONDS = 3600;
 const DEFAULT_MAX_UPLOADS = 1000;
 
 function parsePositiveInteger(value, fallback) {
   const parsed = Number.parseInt(value, 10);
   return Number.isInteger(parsed) && parsed > 0 ? parsed : fallback;
+}
+
+function serializeUpload(upload) {
+  return {
+    id: upload.id,
+    name: upload.name,
+    size: upload.size,
+    created_at: upload.created_at.toISOString(),
+    expires_at: upload.expires_at.toISOString(),
+  };
 }
 
 function createUploadStore(options = {}) {
@@ -63,7 +73,12 @@ function createUploadStore(options = {}) {
     return uploads.get(id) || null;
   }
 
-  return { create, list, get, pruneExpired };
+  function count(now = new Date()) {
+    pruneExpired(now);
+    return uploads.size;
+  }
+
+  return { create, list, get, count, pruneExpired };
 }
 
 function createApp(options = {}) {
@@ -97,7 +112,14 @@ function createApp(options = {}) {
   });
 
   app.get('/health', (req, res) => {
-    res.json({ status: 'healthy' });
+    res.json({ status: 'healthy', version: VERSION });
+  });
+
+  app.get('/metrics', authenticate, (req, res) => {
+    res.json({
+      active_uploads: store.count(),
+      version: VERSION,
+    });
   });
 
   app.post('/upload', authenticate, (req, res) => {
@@ -121,13 +143,7 @@ function createApp(options = {}) {
   });
 
   app.get('/files', authenticate, (req, res) => {
-    res.json(store.list().map((upload) => ({
-      id: upload.id,
-      name: upload.name,
-      size: upload.size,
-      created_at: upload.created_at.toISOString(),
-      expires_at: upload.expires_at.toISOString(),
-    })));
+    res.json(store.list().map(serializeUpload));
   });
 
   app.get('/files/:id', authenticate, (req, res) => {
@@ -137,13 +153,7 @@ function createApp(options = {}) {
       return res.status(404).json({ error: 'File not found' });
     }
 
-    return res.json({
-      id: upload.id,
-      name: upload.name,
-      size: upload.size,
-      created_at: upload.created_at.toISOString(),
-      expires_at: upload.expires_at.toISOString(),
-    });
+    return res.json(serializeUpload(upload));
   });
 
   return app;
@@ -160,4 +170,4 @@ if (require.main === module) {
   });
 }
 
-module.exports = { createApp, createUploadStore, parsePositiveInteger };
+module.exports = { createApp, createUploadStore, parsePositiveInteger, serializeUpload };
