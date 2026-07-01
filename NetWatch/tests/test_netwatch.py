@@ -15,6 +15,14 @@ class ScannerTestCase(unittest.TestCase):
         with self.assertRaises(ArgumentTypeError):
             scanner.parse_ports("0")
 
+    def test_parse_ports_rejects_non_numeric_values(self):
+        with self.assertRaises(ArgumentTypeError):
+            scanner.parse_ports("22,abc,443")
+
+    def test_parse_ports_rejects_empty_values(self):
+        with self.assertRaises(ArgumentTypeError):
+            scanner.parse_ports("22,,443")
+
     @mock.patch("scanner.check_port")
     def test_scan_ports(self, check_port):
         check_port.side_effect = [True, False]
