@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Purim Labs Portfolio Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <nav class="nav">
+      <div class="brand">
+        <span class="brand-mark">PL</span>
+        <span>Purim Labs</span>
+      </div>
+      <div class="nav-links">
+        <a href="../README.md">Repository</a>
+        <a href="../SHOWCASE.md">Showcase</a>
+        <a href="../docs/DEMO_GUIDE.md">Demo Guide</a>
+      </div>
+    </nav>
+
+    <section class="hero-content">
+      <p class="eyebrow">Software Engineering Portfolio</p>
+      <h1>Practical backend services, CLI tools, and project utilities.</h1>
+      <p class="hero-copy">
+        A focused collection of Python and Node.js projects showing clean structure,
+        testing, documentation, and real-world problem solving.
+      </p>
+      <div class="hero-actions">
+        <a class="button primary" href="#projects">View Projects</a>
+        <a class="button secondary" href="#workflow">How to Run</a>
+      </div>
+    </section>
+  </header>
+
+  <main>
+    <section class="stats" aria-label="Portfolio summary">
+      <article>
+        <strong>5</strong>
+        <span>Focused projects</span>
+      </article>
+      <article>
+        <strong>2</strong>
+        <span>Main stacks</span>
+      </article>
+      <article>
+        <strong>CI</strong>
+        <span>Repeatable checks</span>
+      </article>
+      <article>
+        <strong>Docs</strong>
+        <span>Guides and examples</span>
+      </article>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="section-heading">
+        <p class="eyebrow">Project Portfolio</p>
+        <h2>Repository projects</h2>
+        <p>Each card explains the purpose, stack, and portfolio value of a project.</p>
+      </div>
+      <div id="projectGrid" class="project-grid"></div>
+    </section>
+
+    <section class="section split" id="workflow">
+      <div>
+        <p class="eyebrow">Developer Workflow</p>
+        <h2>Simple commands to review the work</h2>
+        <p>
+          The repository includes tests for Python utilities and the Node.js API,
+          plus a Makefile for repeatable local checks.
+        </p>
+      </div>
+      <div class="terminal" aria-label="Commands">
+        <span>$ make test</span>
+        <span>$ make test-python</span>
+        <span>$ make test-node</span>
+        <span>$ cd SecureShare && npm ci && npm test</span>
+      </div>
+    </section>
+
+    <section class="section highlights">
+      <div class="section-heading">
+        <p class="eyebrow">What this demonstrates</p>
+        <h2>Portfolio strengths</h2>
+      </div>
+      <div class="highlight-grid">
+        <article>
+          <h3>Backend APIs</h3>
+          <p>Flask and Express projects with status endpoints, configuration, and tests.</p>
+        </article>
+        <article>
+          <h3>CLI Utilities</h3>
+          <p>Python tools for parsing, checking, summaries, and command-line workflows.</p>
+        </article>
+        <article>
+          <h3>Testing Culture</h3>
+          <p>Unit tests and CI support make the repository easier to trust and maintain.</p>
+        </article>
+        <article>
+          <h3>Documentation</h3>
+          <p>README files, a showcase guide, demo flow, examples, and development notes.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Purim Labs — built by Clinton Purim.</p>
+    <p>Practical software tools for small teams, operations, and self-hosted systems.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
