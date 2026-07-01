@@ -2,9 +2,14 @@
 
 Purim Labs is a portfolio repository of practical backend services, command-line tools, log helpers, and project workflow utilities.
 
-The goal is to show clean structure, useful code, automated tests, and documentation across more than one type of software project.
+The goal is to show clean structure, useful code, automated tests, sample outputs, and documentation across more than one type of software project.
 
-For a quick viewing guide, see [SHOWCASE.md](SHOWCASE.md).
+Start here:
+
+- [SHOWCASE.md](SHOWCASE.md) - short portfolio viewing guide
+- [docs/DEMO_GUIDE.md](docs/DEMO_GUIDE.md) - step-by-step demo flow
+- [examples/](examples/) - sample inputs and JSON outputs
+- [portfolio.json](portfolio.json) - machine-readable project summary
 
 ## Project Portfolio
 
@@ -26,6 +31,7 @@ This repository shows a practical engineering mindset beyond one single app:
 - Python and Node.js automated test coverage
 - Continuous checks with GitHub Actions
 - Clear documentation for each major tool
+- Example files for quick review
 - A roadmap for turning experiments into stronger products
 
 ## Repository Structure
@@ -36,8 +42,11 @@ SecureShare/    Node.js sharing API prototype
 NetWatch/       Python diagnostic helper
 LogLens/        Python log summary helper
 PortalCheck/    Python setup-note reviewer
+docs/           Demo and review notes
+examples/       Sample inputs and outputs
 .github/        GitHub Actions workflow
 SHOWCASE.md     Portfolio viewing guide
+portfolio.json  Project summary data
 ```
 
 ## Quick Start
@@ -76,6 +85,7 @@ cd SecureShare && npm ci && npm test
 - Multiple small projects under one consistent engineering theme
 - Automated tests and repeatable checks included
 - Backend, CLI, documentation, and support-tooling experience
+- Sample files make the projects easier to understand quickly
 - Clear project roadmap for future growth
 
 ## Roadmap
