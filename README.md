@@ -2,10 +2,11 @@
 
 Purim Labs is a portfolio repository of practical backend services, command-line tools, log helpers, and project workflow utilities.
 
-The goal is to show clean structure, useful code, automated tests, sample outputs, and documentation across more than one type of software project.
+The goal is to show clean structure, useful code, automated tests, sample outputs, documentation, and a visual dashboard across more than one type of software project.
 
 Start here:
 
+- [portfolio-dashboard/](portfolio-dashboard/) - visual portfolio dashboard
 - [SHOWCASE.md](SHOWCASE.md) - short portfolio viewing guide
 - [docs/DEMO_GUIDE.md](docs/DEMO_GUIDE.md) - step-by-step demo flow
 - [examples/](examples/) - sample inputs and JSON outputs
@@ -33,22 +34,24 @@ This repository shows a practical engineering mindset beyond one single app:
 - Continuous checks with GitHub Actions
 - Clear documentation for each major tool
 - Example files for quick review
+- A visual dashboard for faster portfolio presentation
 - A roadmap for turning experiments into stronger products
 
 ## Repository Structure
 
 ```text
-PurimMonitor/   Flask service health API
-SecureShare/    Node.js sharing API prototype
-NetWatch/       Python diagnostic helper
-LogLens/        Python log summary helper
-PortalCheck/    Python setup-note reviewer
-docs/           Demo and review notes
-examples/       Sample inputs and outputs
-.github/        GitHub Actions workflow
-SHOWCASE.md     Portfolio viewing guide
-DEVELOPMENT.md  Local development guide
-portfolio.json  Project summary data
+PurimMonitor/        Flask service health API
+SecureShare/         Node.js sharing API prototype
+NetWatch/            Python diagnostic helper
+LogLens/             Python log summary helper
+PortalCheck/         Python setup-note reviewer
+portfolio-dashboard/ Static visual dashboard
+docs/                Demo and review notes
+examples/            Sample inputs and outputs
+.github/             GitHub Actions workflow
+SHOWCASE.md          Portfolio viewing guide
+DEVELOPMENT.md       Local development guide
+portfolio.json       Project summary data
 ```
 
 ## Quick Start
@@ -71,6 +74,12 @@ Run Node.js tests only:
 make test-node
 ```
 
+Open the dashboard locally:
+
+```text
+portfolio-dashboard/index.html
+```
+
 ## Individual Test Commands
 
 ```bash
@@ -88,12 +97,14 @@ cd SecureShare && npm ci && npm test
 - Automated tests and repeatable checks included
 - Backend, CLI, documentation, and support-tooling experience
 - Sample files make the projects easier to understand quickly
+- Visual dashboard makes the repository easier to present
 - Clear project roadmap for future growth
 
 ## Roadmap
 
 Planned ideas for future commits:
 
+- Publish the dashboard with GitHub Pages
 - Uptime alerting service
 - Callback testing helper
 - Deployment checklist generator
