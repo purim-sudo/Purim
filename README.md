@@ -1,59 +1,66 @@
 # Purim Labs
 
-A collection of infrastructure, monitoring, networking, and security-focused experimental projects.
+Purim Labs is a collection of lightweight infrastructure, monitoring, networking, log analysis, and security-focused experimental tools.
+
+The goal is to build practical utilities for small businesses, VPS environments, hotspot deployments, and self-hosted systems.
 
 ## Projects
 
-### PurimMonitor
-A Python Flask dashboard for monitoring VPS and server infrastructure.
+| Project | Stack | Purpose |
+| --- | --- | --- |
+| [PurimMonitor](PurimMonitor/) | Python, Flask, psutil | VPS/server health dashboard with CPU, RAM, disk, uptime, and API health checks. |
+| [SecureShare](SecureShare/) | Node.js, Express, JWT | Secure temporary file-sharing API prototype with expiring upload records and protected endpoints. |
+| [NetWatch](NetWatch/) | Python | Local network diagnostics, safe port checks, and subnet hostname discovery. |
+| [LogLens](LogLens/) | Python | HTTP/application log analyzer with terminal and JSON summaries. |
 
-Features:
-- CPU and RAM monitoring
-- uptime tracking
-- API health checks
-- system statistics dashboard
-- production WSGI deployment with Gunicorn
+## Highlights
 
-### SecureShare
-A secure file-sharing platform prototype focused on temporary encrypted sharing.
+- Small tools that can run on low-cost VPS infrastructure
+- Clear CLI/API boundaries
+- Security-conscious defaults where applicable
+- Unit tests for Python and Node.js projects
+- GitHub Actions CI for automated checks
+- No heavy dependencies for utility-style projects such as NetWatch and LogLens
 
-Features:
-- expiring file links
-- upload management
-- encrypted-ready architecture
-- secure download endpoints
-- JWT-protected API endpoints
-- request rate limiting and security headers
+## Quick Start
 
-### NetWatch
-A lightweight network monitoring and LAN scanning utility.
-
-Features:
-- local network scanning
-- ping monitoring
-- device discovery
-- port status checking
-- explicit CLI arguments for safe, targeted scans
-
-## Stack
-- Python
-- Flask
-- Node.js
-- HTML/CSS/JavaScript
-
-## Test
-
-```bash
-PYTHONPATH=PurimMonitor python -m unittest discover -s PurimMonitor/tests
-PYTHONPATH=NetWatch python -m unittest discover -s NetWatch/tests
-cd SecureShare && npm test
-```
-
-Or run everything with:
+Run all tests:
 
 ```bash
 make test
 ```
 
+Run Python tests only:
+
+```bash
+make test-python
+```
+
+Run Node.js tests only:
+
+```bash
+make test-node
+```
+
+## Individual Test Commands
+
+```bash
+PYTHONPATH=PurimMonitor python -m unittest discover -s PurimMonitor/tests
+PYTHONPATH=NetWatch python -m unittest discover -s NetWatch/tests
+PYTHONPATH=LogLens python -m unittest discover -s LogLens/tests
+cd SecureShare && npm ci && npm test
+```
+
+## Project Ideas Roadmap
+
+Potential future additions:
+
+- MikroTik hotspot diagnostics helper
+- Small uptime alerting service
+- Lightweight MPESA/Daraja callback tester
+- eTIMS integration sandbox utilities
+- Nginx and firewall configuration audit scripts
+
 ## Vision
-Purim Labs focuses on lightweight infrastructure and security tooling for small businesses, hotspot environments, and self-hosted systems.
+
+Purim Labs focuses on practical, lightweight infrastructure and security tooling for small businesses, hotspot environments, and self-hosted systems.
